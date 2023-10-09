@@ -30,4 +30,12 @@ public class Main {
         }
         return y;
     }
+
+    public double sum(double[] arr) {
+        double res = 0;
+        for (double v : arr) {
+            res += v;
+        }
+        return res;
+    }
 }

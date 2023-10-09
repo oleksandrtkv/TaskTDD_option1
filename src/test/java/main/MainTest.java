@@ -47,4 +47,12 @@ public class MainTest {
         double[] actual = main.fillY(main.fillX(start, end, step));
         assertEquals(actual[index], expected, EPS);
     }
+
+    @Test
+    public void testSum() {
+        double[] arr = {1.1, 2.5, -7.0, 10.0, 0.5};
+        double expected = 7.1;
+        double actual = main.sum(arr);
+        assertEquals(actual, expected, EPS);
+    }
 }
