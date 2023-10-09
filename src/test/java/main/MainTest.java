@@ -1,6 +1,7 @@
 package main;
 
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.*;
@@ -16,10 +17,8 @@ public class MainTest {
         main = new Main();
     }
 
-    @Test
-    public void testF() {
-        double expected = 1;
-        double x = 0.1;
+    @Test(dataProvider = "dataForTest", dataProviderClass = StaticDataProvider.class)
+    public void testF(double x, double expected) {
         double actual = main.f(x);
         assertEquals(actual, expected, EPS);
     }
