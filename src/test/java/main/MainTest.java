@@ -22,4 +22,29 @@ public class MainTest {
         double actual = main.f(x);
         assertEquals(actual, expected, EPS);
     }
+
+    @Test(dataProvider = "dataForSteps", dataProviderClass = StaticDataProvider.class)
+    public void testSteps(double start, double end, double step, int expected) {
+        int actual = main.steps(start, end, step);
+        assertEquals(actual, expected);
+    }
+
+    @Test(dataProviderClass = StaticDataProvider.class, dataProvider = "dataForFillX")
+    public void testFillX(int index, double expected) {
+        double start = 0.0;
+        double end = 3.0;
+        double step = 0.004;
+
+        double[] actual = main.fillX(start, end, step);
+        assertEquals(actual[index], expected, EPS);
+    }
+
+    @Test(dataProviderClass = StaticDataProvider.class, dataProvider = "dataForFillY")
+    public void testFillY(int index, double expected) {
+        double start = 0.0;
+        double end = 3.0;
+        double step = 0.004;
+        double[] actual = main.fillY(main.fillX(start, end, step));
+        assertEquals(actual[index], expected, EPS);
+    }
 }
